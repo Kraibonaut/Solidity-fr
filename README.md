@@ -236,18 +236,18 @@ contract Array {
         // Cela augmentera la longueur du tableau de 1.
         arr.push(i);
         // Enlève le dernier élément du tableau
-        // This will decrease the array length by 1
+        // Cela diminuera la longueur du tableau de 1
         arr.pop();
-        // get the length of the array
+        // obtenir la longueur du tableau
         uint length = arr.length;
-        // Delete does not change the array length.
-        // It resets the value at index to it's default value,
-        // in this case it resets the value at index 1 in arr2 to 0
+        // La suppression ne modifie pas la longueur du tableau.
+        // Il réinitialise la valeur à l'index à sa valeur par défaut,
+        // dans ce cas, il réinitialise la valeur de l'index 1 dans arr2 à 0
         uint index = 1;
         delete arr2[index];
-        // create array in memory, only fixed size can be created
+        // créer un tableau en mémoire, seule une taille fixe peut être créée
         uint[] memory a = new uint[](5);
-        // create string in memory
+        // crée une chaîne de caractères en mémoire
         string memory hi = "hi";
     }
 
