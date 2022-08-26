@@ -2,12 +2,12 @@
 
 ![image](https://user-images.githubusercontent.com/16539849/173656651-a46df615-8ec3-43fd-9619-98647a6d2bd2.png)
 
-In this module you will learn what is Solidity and the basic syntax of the language.
+Dans ce module, vous apprendrez ce qu'est Solidity et la syntaxe de base du langage.
 
 ## What is Solidity ?
 
-- Solidity is an object-oriented, high-level language for implementing smart contracts. It is designed to target [Ethereum Virtual Machine(EVM)](https://coinmarketcap.com/alexandria/glossary/ethereum-virtual-machine-evm)
-- It is statically typed, supports inheritance, libraries and complex user-defined types among other features.
+- Solidity est un langage orienté objet et de haut niveau pour la mise en œuvre de contrats intelligents. Il est conçu pour cibler l'[Ethereum Virtual Machine(EVM)](https://coinmarketcap.com/alexandria/glossary/ethereum-virtual-machine-evm)
+- Il est typée statiquement, supporte l'héritage, les bibliothèques et les types complexes définis par l'utilisateur, entre autres caractéristiques.
 
 <Quiz questionId="e7201124-8b84-4e20-99d3-d85189ee1817" />
 
@@ -16,10 +16,10 @@ In this module you will learn what is Solidity and the basic syntax of the langu
 ### Initializing smart contracts
 
 ```solidity
-// Define the compiler version you would be using
+// Pour définir la version du compilateur que vous utiliserez
 pragma solidity ^0.8.10;
 
-// Start by creating a contract named HelloWorld
+// Commencez par créer un contrat nommé  HelloWorld
 contract HelloWorld {
 
 }
@@ -27,57 +27,57 @@ contract HelloWorld {
 
 ### Variables and types
 
-There are 3 types of variables in Solidity
+Il existe 3 types de variables dans Solidity
 
 - Local
-  - Declared inside a function and are not stored on blockchain
-- State
-  - Declared outside a function to maintain the state of the smart contract
-  - Stored on the blockchain
+  - Déclaré à l'intérieur d'une fonction et n'est pas stocké sur la blockchain.
+- État
+  - Déclaré à l'extérieur d'une fonction pour maintenir l'état du smart contract.
+  - Stockés sur la blockchain
 - Global
-  - Provide information about the blockchain. They are injected by the Ethereum Virtual Machine during runtime.
-  - Includes things like transaction sender, block timestamp, block hash, etc.
-  - [Examples of global variables](https://docs.soliditylang.org/en/v0.8.9/units-and-global-variables.html)
+  - Fournissent des informations sur la blockchain. Elles sont injectées par la machine virtuelle Ethereum pendant l'exécution.
+  - Comprend des choses comme l'expéditeur de la transaction, l'horodatage du bloc, le hachage du bloc, etc.
+  - [Examples de variables global](https://docs.soliditylang.org/en/v0.8.9/units-and-global-variables.html)
 
-The scope of variables is defined by where they are declared, not their value. Setting a local variable's value to a global variable does not make it a global variable, as it is still only accessible within it's scope.
+La portée des variables est définie par l'endroit où elles sont déclarées, et non par leur valeur. Le fait d'attribuer la valeur d'une variable locale à une variable globale ne fait pas d'elle une variable globale, car elle n'est toujours accessible que dans sa portée.
 
 <Quiz questionId="04b4af27-6816-4a2e-9070-16c6e4c783ce" />
 
 ```solidity
-// Define the compiler version you would be using
+// Pour définir la version du compilateur que vous utiliserez
 pragma solidity ^0.8.10;
 
-// Start by creating a contract named Variables
+// Commencez par créer un contrat nommé  Variables
 contract Variables {
     /*
         ******** State variables **********
     */
     /*
-    uint stands for unsigned integer, meaning non negative integers
-    different sizes are available. Eg
-        - uint8   ranges from 0 to 2 ** 8 - 1
-        - uint256 ranges from 0 to 2 ** 256 - 1
-    `public` means that the variable can be accessed internally
-     by the contract and can also be read by the external world
+     uint signifie "unsigned integer", c'est-à-dire des nombres entiers non négatifs.
+    différentes tailles sont disponibles. Par exemple,
+        - uint8 va de 0 à 2 ** 8 - 1
+        - uint256 va de 0 à 2 ** 256 - 1
+    `public` signifie que la variable peut être accédée par le contrat
+     par le contrat et peut également être lue par le monde extérieur.
     */
     uint8 public u8 = 10;
     uint public u256 = 600;
-    uint public u = 1230; // uint is an alias for uint256
+    uint public u = 1230; // uint est un alias pour uint256
 
     /*
-    Negative numbers are allowed for int types. Eg
-    - int256 ranges from -2 ** 255 to 2 ** 255 - 1
+    Les nombres négatifs sont autorisés pour les types int. Par exemple,
+    - int256 va de -2 ** 255 à 2 ** 255 - 1
     */
-    int public i = -123; // int is same as int256
+    int public i = -123; // int est identique à int256
 
-    // address stands for an ethereum address
+    // address représente une adresse ethereum
     address public addr = 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c;
 
-    // bool stands for boolean
+    // bool signifie booléen
     bool public defaultBoo1 = false;
 
-    // Default values
-    // Unassigned variables have a default value in Solidity
+    // Valeurs par défaut
+    // Les variables non assignées ont une valeur par défaut dans Solidity
     bool public defaultBoo2; // false
     uint public defaultUint; // 0
     int public defaultInt; // 0
@@ -94,11 +94,11 @@ contract Variables {
         */
 
         /*
-            block.timestamp tells us whats the timestamp for the current block
-            msg.sender tells us which address called the doSomething function
+             block.timestamp nous dit quel est l'horodatage du bloc actuel
+            msg.sender nous indique quelle adresse a appelé la fonction doSomething.
         */
-        uint timestamp = block.timestamp; // Current block timestamp
-        address sender = msg.sender; // address of the caller
+        uint timestamp = block.timestamp; // Horodatage du bloc actuel
+        address sender = msg.sender; // adresse de l'appelant
     }
 }
 ```
@@ -111,39 +111,39 @@ contract Variables {
 ### Functions, Loops and If/Else
 
 ```solidity
-// Define the compiler version you would be using
+// Pour définir la version du compilateur que vous utiliserez
 pragma solidity ^0.8.10;
 
-// Start by creating a contract named Conditions
+// Commencez par créer un contrat nommé  Conditions
 contract Conditions {
-    // State variable to store a number
+    // Variable d'état pour stocker un nombre
     uint public num;
 
     /*
-        Name of the function is set.
-        It takes in a uint and sets the state variable num.
-        It is a declared as a public function meaning
-        it can be called from within the contract and also externally.
+       Le nom de la fonction est set.
+        Elle prend un uint et définit la variable d'état num.
+        Elle est déclarée comme une fonction publique, ce qui signifie
+        qu'elle peut être appelée à l'intérieur du contrat et aussi à l'extérieur.
     */
     function set(uint _num) public {
         num = _num;
     }
 
     /*
-        Name of the function is get.
-        It returns the value of num.
-        It is declared as a view function meaning
-        that the function doesnt change the state of any variable.
-        view functions in solidity do not require gas.
+        Le nom de la fonction est get.
+        Elle retourne la valeur de num.
+        Elle est déclarée comme une fonction de vue, ce qui signifie
+        que la fonction ne change pas l'état d'une variable.
+        Les fonctions de vue dans la solidité ne nécessitent pas de gaz.
     */
     function get() public view returns (uint) {
         return num;
     }
 
     /*
-        Name of the function is foo.
-        It takes in  uint and returns an uint.
-        It compares the value of x using if/else
+        Le nom de la fonction est foo.
+        Elle prend un uint et retourne un uint.
+        Elle compare la valeur de x en utilisant if/else.
     */
     function foo(uint x) public returns (uint) {
         if (x < 10) {
@@ -156,18 +156,18 @@ contract Conditions {
     }
 
     /*
-        Name of the function is loop.
-        It runs a loop till 10
+        Le nom de la fonction est loop.
+        Elle exécute une boucle jusqu'à 10
     */
     function loop() public {
-        // for loop
+        // for loop = pour la boucle
         for (uint i = 0; i < 10; i++) {
             if (i == 3) {
-                // Skip to next iteration with continue
+                // Passer à l'itération suivante avec continue
                 continue;
             }
             if (i == 5) {
-                // Exit loop with break
+                // Fin de la boucle/loop avec break
                 break;
             }
         }
@@ -183,59 +183,59 @@ contract Conditions {
 
 ### Arrays, Strings
 
-Array can have a compile-time fixed size or a dynamic size.
+Un tableau peut avoir une taille fixe au moment de la compilation ou une taille dynamique.
 
 ```solidity
 pragma solidity ^0.8.10;
 
 contract Array {
 
-    // Declare a string variable which is public
+    // Déclarer une variable de type chaîne de caractères qui est publique
     string public greet = "Hello World!";
-    // Several ways to initialize an array
-    // Arrays initialized here are considered state variables that get stored on the blockchain
-    // These are called storage variables
+    // Plusieurs façons d'initialiser un tableau
+    // Les tableaux initialisés ici sont considérés comme des variables d'état qui sont stockées sur la blockchain.
+    // Il s'agit de variables de stockage
     uint[] public arr;
     uint[] public arr2 = [1, 2, 3];
-    // Fixed sized array, all elements initialize to 0
+    // Tableau de taille fixe, tous les éléments sont initialisés à 0.
     uint[10] public myFixedSizeArr;
     /*
-        Name of the function is get
-        It gets the value of element stored in an array's index
+        Le nom de la fonction est get
+        Elle obtient la valeur de l'élément stocké dans l'index d'un tableau.
     */
     function get(uint i) public view returns (uint) {
         return arr[i];
     }
 
     /*
-     Solidity can return the entire array.
-     This function gets called with and returns a uint[] memory.
-     memory - the value is stored only in memory, and not on the blockchain
-              it only exists during the time the function is being executed
+      Solidity peut retourner le tableau entier.
+     Cette fonction est appelée avec et renvoie un uint[] memory.
+     mémoire - la valeur est stockée uniquement en mémoire, et non sur la blockchain
+              elle n'existe que pendant la durée d'exécution de la fonction.
 
-     Memory variables and Storage variables can be thought of as similar to RAM vs Hard Disk.
-     Memory variables exist temporarily, during function execution, whereas Storage variables
-     are persistent across function calls for the lifetime of the contract.
-     Here the array is only needed for the duration while the function executes and thus is declared as a memory variable
+     Les variables de mémoire et les variables de stockage peuvent être comparées à la RAM et au disque dur.
+     Les variables de mémoire existent temporairement, pendant l'exécution de la fonction, tandis que les variables de stockage
+     sont persistantes à travers les appels de fonction pour la durée de vie du contrat.
+     Ici, le tableau n'est nécessaire que pour la durée d'exécution de la fonction et est donc déclaré comme une variable mémoire.
     */
     function getArr(uint[] memory _arr) public view returns (uint[] memory) {
         return _arr;
     }
 
      /*
-        This function returns string memory.
-        The reason memory keyword is added is because string internally works as an array
-        Here the string is only needed while the function executes.
+         Cette fonction renvoie la mémoire des chaînes de caractères.
+        La raison pour laquelle le mot clé memory est ajouté est que la chaîne fonctionne en interne comme un tableau.
+        Ici, la chaîne n'est nécessaire que pendant l'exécution de la fonction.
     */
     function foo() public returns (string memory) {
         return "C";
     }
 
     function doStuff(uint i) public {
-        // Append to array
-        // This will increase the array length by 1.
+        // Ajouter au tableau
+        // Cela augmentera la longueur du tableau de 1.
         arr.push(i);
-        // Remove last element from array
+        // Enlève le dernier élément du tableau
         // This will decrease the array length by 1
         arr.pop();
         // get the length of the array
